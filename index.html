@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Striver LeetCode Links</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="app-header">
+      <div class="header-main">
+        <div>
+          <p class="eyebrow">Striver sheet links</p>
+          <h1>LeetCode problems from Striver SDE and A2Z DSA</h1>
+        </div>
+        <nav class="source-nav" aria-label="Source sheets">
+          <a href="https://takeuforward.org/dsa/strivers-sde-sheet-top-coding-interview-problems" target="_blank" rel="noreferrer">SDE source</a>
+          <a href="https://takeuforward.org/dsa/strivers-a2z-sheet-learn-dsa-a-to-z" target="_blank" rel="noreferrer">A2Z source</a>
+        </nav>
+      </div>
+
+      <section class="stats-grid" aria-label="Link totals">
+        <div class="stat">
+          <span class="stat-label">Unique LeetCode problems</span>
+          <strong id="uniqueTotal">0</strong>
+        </div>
+        <div class="stat">
+          <span class="stat-label">Total sheet links</span>
+          <strong id="entryTotal">0</strong>
+        </div>
+        <div class="stat">
+          <span class="stat-label">SDE links / unique</span>
+          <strong id="sdeTotal">0</strong>
+        </div>
+        <div class="stat">
+          <span class="stat-label">A2Z links / unique</span>
+          <strong id="a2zTotal">0</strong>
+        </div>
+        <div class="stat">
+          <span class="stat-label">Marked done</span>
+          <strong id="doneTotal">0</strong>
+        </div>
+      </section>
+    </header>
+
+    <main class="layout">
+      <aside class="controls" aria-label="Filters">
+        <label class="field">
+          <span>Search</span>
+          <input id="searchInput" type="search" placeholder="Problem, topic, sheet, or URL">
+        </label>
+
+        <div class="field">
+          <span>View</span>
+          <div class="segmented" role="group" aria-label="View mode">
+            <button class="segment is-active" type="button" data-view="unique">Unique</button>
+            <button class="segment" type="button" data-view="entries">Sheet entries</button>
+          </div>
+        </div>
+
+        <label class="field">
+          <span>Sheet</span>
+          <select id="sheetFilter">
+            <option value="all">All sheets</option>
+            <option value="both">In both sheets</option>
+            <option value="SDE">SDE sheet</option>
+            <option value="A2Z">A2Z DSA sheet</option>
+          </select>
+        </label>
+
+        <fieldset class="check-field">
+          <legend>Difficulty</legend>
+          <label><input type="checkbox" name="difficulty" value="Easy" checked> Easy</label>
+          <label><input type="checkbox" name="difficulty" value="Medium" checked> Medium</label>
+          <label><input type="checkbox" name="difficulty" value="Hard" checked> Hard</label>
+        </fieldset>
+
+        <label class="field">
+          <span>Group by</span>
+          <select id="groupFilter">
+            <option value="topic">Topic</option>
+            <option value="sheet">Sheet</option>
+            <option value="none">No groups</option>
+          </select>
+        </label>
+
+        <label class="field">
+          <span>Sort</span>
+          <select id="sortFilter">
+            <option value="sheet">Sheet order</option>
+            <option value="title">Problem title</option>
+            <option value="difficulty">Difficulty</option>
+          </select>
+        </label>
+
+        <div class="toggles">
+          <label><input id="duplicatesOnly" type="checkbox"> Show overlaps only</label>
+          <label><input id="hideDone" type="checkbox"> Hide done</label>
+        </div>
+
+        <div class="control-actions">
+          <button id="copyLinks" type="button">Copy visible links</button>
+          <button id="downloadCsv" type="button">Download CSV</button>
+          <button id="clearProgress" type="button">Clear done</button>
+        </div>
+      </aside>
+
+      <section class="content">
+        <div class="content-toolbar">
+          <p id="resultSummary">Loading links...</p>
+          <p id="statusMessage" aria-live="polite"></p>
+        </div>
+        <div id="results" class="results" aria-live="polite"></div>
+      </section>
+    </main>
+
+    <footer class="page-footer">
+      Data fetched from the official TakeUForward Striver SDE and A2Z DSA sheet pages on May 4, 2026. Only rows with LeetCode problem links are included.
+    </footer>
+
+    <script src="leetcode-data.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
