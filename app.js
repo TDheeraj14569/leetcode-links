@@ -338,14 +338,17 @@
     return row ? row.sheetKeys.includes("SDE") && row.sheetKeys.includes("A2Z") : false;
   }
 
-  function toggleDone(url, checked) {
+ function toggleDone(url, checked) {
     if (checked) {
       done.add(url);
     } else {
       done.delete(url);
     }
     saveDone();
+
+    const scrollY = window.scrollY;
     render();
+    window.scrollTo(0, scrollY);
   }
 
   function clearProgress() {
